@@ -1,38 +1,46 @@
-# AstroPredict — Satellite Solar Power Predictor (Demo)
+# 🛰️ AstroPredict  
+### _“Exploring the bridge between AI and Space Science.”_
 
-**AstroPredict** is a small, explainable project that demonstrates how to:
-- generate a physics-inspired synthetic dataset for satellite solar power,
-- train a simple machine learning model (Random Forest) to predict average usable power per orbit,
-- expose a Streamlit UI for interactive prediction and dataset inspection.
+**by Salma Hoque Koli, BSc in CSE (2026)**  
 
-This project is intentionally designed for teaching / MSc-application demos. The dataset is synthetic (and documented) so you can explain exactly how data was generated to your professor.
+---
 
-## Quick start (local)
-```bash
-unzip astropredict_package.zip
-cd astropredict_package
-python3 -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-# generate data and train:
-python train.py
-# run the Streamlit app:
-streamlit run app.py
-```
+## 🚀 Overview
+**AstroPredict** is a small but research-inspired project that predicts how much **solar power a satellite can generate per orbit** using **Machine Learning**.  
 
-## What to show your professor
-- `train.py` shows the data-generation logic (physics-inspired) and a small RF model training.
-- Explain features like `eclipse_fraction` and how altitude/inclination affect sun exposure.
-- Include plots (you can extend notebook/) showing correlation between altitude and generated power.
+I built this to explore how data-driven models can connect with real orbital behavior — without using any external datasets.  
+All the data in this project is **synthetic**, generated through physics-inspired logic.
 
-## Files
-- `astropredict/` : package with data generation & model helpers
-- `train.py` : script that creates dataset and trains model (`model/astropredict_rf.joblib`)
-- `app.py` : Streamlit demo to predict using the trained model
-- `data/sample_dataset.csv` : generated sample dataset
-- `requirements.txt`, `README.md`, `.gitignore`
+---
 
-## Extending for research-level quality
-- Replace synthetic data with simulated or real pass/illumination computations (SGP4 + eclipse modeling).
-- Add explainability: SHAP plots showing feature importance per prediction.
-- Add uncertainty estimation (quantile regression / ensembles).
+## 🎯 Objective
+- Estimate satellite solar power output based on orbit parameters.  
+- Analyze how altitude, inclination, and eclipse fraction affect energy.  
+- Create a simple, interactive prediction app for demonstration.
+
+---
+
+## ⚙️ How It Works
+1. **Synthetic Dataset**  
+   Generated using `data_gen.py`, which simulates:
+   - Altitude (km)  
+   - Inclination (°)  
+   - Eclipse fraction (0–1)  
+   - Panel efficiency (%)  
+   - Temperature (°C)  
+   - → Output: Average Power (Watts)
+
+2. **Model Training**  
+   The model (`RandomForestRegressor`) is trained in `train.py` and saved for reuse.
+
+3. **Interactive App**  
+   Built with **Streamlit**, allowing users to test different orbit values and see instant predictions.
+
+---
+
+## 📊 Insights
+- Higher **altitude** → less eclipse time → more solar power.  
+- Greater **inclination** → slightly lower average output due to thermal stress.  
+- **Panel efficiency** has the strongest positive correlation with power.
+
+These results make physical sense — which means even synth
